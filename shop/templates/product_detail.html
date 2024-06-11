@@ -1,0 +1,14 @@
+<!-- shop/templates/shop/product_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ product.name }}</h2>
+{% if product.image %}
+    <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+{% endif %}
+<p>{{ product.description }}</p>
+<p>Price: ${{ product.price }}</p>
+<p>Category: {{ product.category.name }}</p>
+<button class="btn btn-primary" onclick="addToCart({{ product.id }}, '{{ product.name }}', {{ product.price }})">Add to Cart</button>
+<a href="{% url 'product_list' %}" class="btn btn-secondary">Back to all products</a>
+{% endblock %}
